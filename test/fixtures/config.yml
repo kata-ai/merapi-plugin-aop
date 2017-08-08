@@ -5,7 +5,7 @@ components:
     aopCom: AopCom
 aspects:
     logging:
-        handler: aopCom.logMethod
+        handler: aopLogger.logMethod
         match: "*.*"
     kafka:
         handler: aopCom.kafkaPublish
