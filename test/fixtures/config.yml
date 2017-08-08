@@ -1,0 +1,12 @@
+plugins:
+    - aop
+    - aop-logger
+components:
+    aopCom: AopCom
+aspects:
+    logging:
+        handler: aopCom.logMethod
+        match: "*.*"
+    kafka:
+        handler: aopCom.kafkaPublish
+        match: "*.*"
