@@ -1,7 +1,7 @@
 {
   "name": "@yesboss/merapi-plugin-aop",
-  "version": "0.1.0",
-  "description": "",
+  "version": "0.1.1",
+  "description": "Merapi AOP Plugin",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
