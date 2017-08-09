@@ -7,7 +7,7 @@ module.exports = function (container) {
         dependencies: [],
 
         *onBeforeComponentsRegister() {
-            container.register("aop", require("./lib/aop"));
+            container.register("aop", require("./lib/aspect"));
         },
 
         *onComponentInstantiate(name, component) {
