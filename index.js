@@ -11,22 +11,22 @@ module.exports = function (container) {
         },
 
         *onComponentInstantiate(name, component) {
-            if(name !== "aop") {
+            if (name !== "aop") {
                 let aop = yield container.resolve("aop");
                 let matches = aop.matchComponent(name);
-                if (matches) {
+                if (matches && !aop.getAllHandlerClass().include(name)) {
                     for (let i = 0; i < matches.length; i++) {
                         let props = utils.getAllPropertyNames(component);
                         for (let j = 0; j < props.length; j++) {
-                            if ((matches[i].methodName === "*" || props[j] === matches[i].methodName)
-                                && typeof component[props[j]] === "function") {
-                                    let handler = yield container.injector.resolveMethod(matches[i].handler);
-                                    component[props[j]] = yield aop.wrapMethod(handler, component, props[j], matches[i].options);
-                                }
+                            if ((matches[i].methodName === "*" || props[j] === matches[i].methodName) && typeof component[props[j]] === "function") {
+                                let handler = yield container.injector.resolveMethod(matches[i].handler);
+                                component[props[j]] = aop.wrapMethod(handler, component, props[j], matches[i].options);
+                            }
                         }
                     }
                 }
             }
         }
+
     };
 }
