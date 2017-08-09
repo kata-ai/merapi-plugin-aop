@@ -15,8 +15,12 @@ describe("aspect", function () {
                 version: "0.0.1",
                 aspects: {
                     logging: {
-                        handler: "*.*",
+                        handler: "aopLogger.log",
                         match: "daenerys.targaryen"
+                    },
+                    kafka: {
+                        handler: "aopKafka.publish",
+                        match: "cersei.lannister"
                     }
                 }
         });
@@ -32,7 +36,7 @@ describe("aspect", function () {
         it("should return matches aspect", function () {
             let res = aop.matchComponent("daenerys");
             expect(res).to.deep.equal([{
-                handler: "*.*",
+                handler: "aopLogger.log",
                 componentName: "daenerys",
                 methodName: "targaryen",
                 options: undefined
@@ -67,6 +71,21 @@ describe("aspect", function () {
             let result = wrappedMethod(1, 2);
             expect(result).to.equal("Jon");
         }));
+    });
+
+    describe("getAllHandlerClass", function () {
+        it("should return all handler", function () {
+            let res = aop.getAllHandlerClass();
+            expect(res).to.deep.equal([ "aopLogger", "aopKafka" ]);
+        });
+    });
+
+    describe("createAspect", function () {
+        it("should update aspects", function () {
+            aop.createAspect("rabbit", { handler: "aopRabbit", match: "*.*" });
+            let res = aop.getAllHandlerClass();
+            expect(res).to.deep.equal([ "aopLogger", "aopKafka", "aopRabbit" ]);
+        });
     });
 
     describe("_getAspectCondition", function () {
