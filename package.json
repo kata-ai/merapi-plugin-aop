@@ -1,5 +1,5 @@
 {
-  "name": "merapi-plugin-aop",
+  "name": "@yesboss/merapi-plugin-aop",
   "version": "0.1.0",
   "description": "",
   "main": "index.js",
