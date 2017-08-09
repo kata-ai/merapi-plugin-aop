@@ -11,13 +11,13 @@ module.exports = function (container) {
         },
 
         *onComponentInstantiate(name, component) {
-            let aop = yield container.resolve("aop");
             if(name !== "aop") {
+                let aop = yield container.resolve("aop");
                 let matches = aop.matchComponent(name);
                 if (matches) {
                     for (let i = 0; i < matches.length; i++) {
                         let props = utils.getAllPropertyNames(component);
-                        for (let j = 0; j < properties.length; j++) {
+                        for (let j = 0; j < props.length; j++) {
                             if ((matches[i].methodName === "*" || props[j] === matches[i].methodName)
                                 && typeof component[props[j]] === "function") {
                                     let handler = yield container.injector.resolveMethod(matches[i].handler);
