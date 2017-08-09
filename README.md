@@ -9,7 +9,7 @@ This plugin will wrap selected method with specified handler method.
 Add plugin to dependency list in `package.json`
 
 ```
-npm install merapi-plugin-aop
+npm install merapi-plugin-aop --save
 ```
 
 ## Configuration
