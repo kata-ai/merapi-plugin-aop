@@ -15,7 +15,7 @@ module.exports = function (container) {
             let matches = aop.matchComponent(name);
             if (matches) {
                 for (let i = 0; i < matches; i++) {
-                    utils.getAllPropertyNames(component).forEach(prop => {
+                    utils.getAllPropertyNames(component).forEach(function* (prop) {
                         if ((matches[i].methodName === "*" || prop === matches[i].methodName)
                             && typeof component[prop] === "function") {
                                 let handler = yield container.injector.resolveMethod(matches[i].handler);
