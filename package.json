@@ -1,6 +1,6 @@
 {
   "name": "@yesboss/merapi-plugin-aop",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Merapi AOP Plugin",
   "main": "index.js",
   "scripts": {
