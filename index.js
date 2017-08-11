@@ -14,7 +14,8 @@ module.exports = function (container) {
             if (name !== "aop") {
                 let aop = yield container.resolve("aop");
                 let matches = aop.matchComponent(name);
-                if (matches && !aop.getAllHandlerClass().include(name)) {
+                let handlers = aop.getAllHandlerClass();
+                if (matches && !(handlers.include(name))) {
                     for (let i = 0; i < matches.length; i++) {
                         let props = utils.getAllPropertyNames(component);
                         for (let j = 0; j < props.length; j++) {
