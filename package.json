@@ -1,10 +1,14 @@
 {
-  "name": "@yesboss/merapi-plugin-aop",
+  "name": "merapi-plugin-aop",
   "version": "0.1.4",
   "description": "Merapi AOP Plugin",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:kata-ai/merapi-plugin-aop.git"
   },
   "author": "Ricky Anders <rickyanders93@gmail.com>",
   "license": "ISC",
