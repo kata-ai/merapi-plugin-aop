@@ -51,7 +51,7 @@ describe("aspect", function () {
 
         let handlerFunction = function(component, methodName, func, options) {
             let output = options.output;
-            return function(...args) {
+            return (...args) => {
                 let result = func(...args);
                 let replaceObject = {
                     methodName,
@@ -61,13 +61,12 @@ describe("aspect", function () {
                 output = output.replace(/\[\w+\]/g, (word) => {
                     return replaceObject[word.replace(/\[|\]/g, "")] || word;
                 });
-                console.log(output);
                 return "Jon";
             }
         }
 
         it("should return true", async(function* () {
-            let wrappedMethod = yield aop.wrapMethod(handlerFunction, { targaryen: originalFunction }, "targaryen", { output: "test log [methodName]: [params] [result]" });
+            let wrappedMethod = aop.wrapMethod(handlerFunction, { targaryen: originalFunction }, "targaryen", { output: "test log [methodName]: [params] [result]" });
             let result = wrappedMethod(1, 2);
             expect(result).to.equal("Jon");
         }));
