@@ -16,7 +16,7 @@ npm install merapi-plugin-aop --save
 
 ```
 {
-    name: "gogon-service",
+    name: "my-service",
     version: "1.0.0",
     plugins: [
         "aop"

@@ -6,7 +6,7 @@ module.exports = function (container) {
     return {
         dependencies: [],
 
-        *onBeforeComponentsRegister() {
+        *onAfterPluginInit() {
             container.register("aop", require("./lib/aspect"));
         },
 
